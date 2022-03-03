@@ -17,7 +17,7 @@ let url;
 if (env === "development") {
   url = "http://localhost:5000/";
 }else{
-  url = window.location.href
+  url = 'https://lamtellbackend.herokuapp.com/'
 }
 
 function Sidebar(props) {

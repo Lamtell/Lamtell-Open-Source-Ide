@@ -10,7 +10,7 @@ let userCode = [];
 let globalUrl =
   process.env.NODE_ENV === "development"
     ? "http://localhost:5000/"
-    : window.location.href;
+    : 'https://lamtellbackend.herokuapp.com/';
 
 
 export default function UserCode() {
