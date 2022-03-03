@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 let globalUrl =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:5000"
+    ? "http://localhost:5000/"
     : window.location.href;
 
 function PS() {
@@ -17,7 +17,7 @@ function PS() {
     const handleSubmit = (event) => {
       event.preventDefault();
       console.log(event)
-      axios.get(globalUrl + "/ps?url=" + url).then((response) => {
+      axios.get(globalUrl + "ps?url=" + url).then((response) => {
         dispatch(updateSampleTests(response.data.sampleTests));
         let if_data = cfMarkup + response.data.markup + cfEndMarkup;
         var ifrm = document.createElement("iframe");

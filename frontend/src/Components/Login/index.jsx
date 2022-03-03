@@ -13,7 +13,7 @@ import "./styles.css";
 const env = process.env.NODE_ENV; // current environment
 let url
 if(env === "development") {
-    url = 'http://localhost:5000'
+    url = 'http://localhost:5000/'
 }else{
   url = window.location.href
 }
@@ -29,7 +29,7 @@ export default function Login() {
     const userEmail = document.getElementById("email");
     submitButton.addEventListener("click", () => {
       let loginReq = axios.post(
-        url+"/login",
+        url+"login",
         {
           email: userEmail.value,
           password: userPassword.value,

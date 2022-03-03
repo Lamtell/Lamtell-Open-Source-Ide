@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 const env = process.env.NODE_ENV; // current environment
 let url;
 if (env === "development") {
-  url = "http://localhost:5000";
+  url = "http://localhost:5000/";
 }else{
   url = window.location.href
 }
@@ -34,7 +34,7 @@ function Sidebar(props) {
 
   function openModal() {
     axios
-      .post(url + "/share", {
+      .post(url + "share", {
         code: file.content,
         input: inout[0].content,
         output: inout[1].content,
@@ -46,7 +46,7 @@ function Sidebar(props) {
   }
 
   const handleLogout = () => {
-    let logoutReq = axios.get(url + `/logout?id=${cookies.sessId}`);
+    let logoutReq = axios.get(url + `logout?id=${cookies.sessId}`);
 
     const id = toast.loading("Logging you out!");
 

@@ -9,7 +9,7 @@ let userCode = [];
 
 let globalUrl =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:5000"
+    ? "http://localhost:5000/"
     : window.location.href;
 
 
@@ -20,7 +20,7 @@ export default function UserCode() {
     (() => {
 
       axios(
-        `${globalUrl}/usercode/${cookies.sessId}`
+        `${globalUrl}usercode/${cookies.sessId}`
       ).then((response) => {
         if (response.data.status === 200) {
           response.data.code.forEach((code, index) => {

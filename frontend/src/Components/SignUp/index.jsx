@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const env = process.env.NODE_ENV; // current environment
 let url
 if(env === "development") {
-    url = 'http://localhost:5000'
+    url = 'http://localhost:5000/'
 }else{
   url = window.location.href
 }
@@ -30,7 +30,7 @@ export default function SignUp() {
     const userEmail = document.getElementById("email");
     submitButton.addEventListener("click", () => {
       const id = toast.loading("Creating Your Account...");
-      axios.post(url+"/signup", {
+      axios.post(url+"signup", {
         email:userEmail.value,
         password:userPassword.value,
         name:userName.value

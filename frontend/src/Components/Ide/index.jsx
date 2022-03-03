@@ -12,7 +12,7 @@ import { useParams } from "react-router";
 const env = process.env.NODE_ENV;
 let url
 if(env === "development") {
-    url = 'http://localhost:5000'
+    url = 'http://localhost:5000/'
 }else{
   url = window.location.href
 }
@@ -50,7 +50,7 @@ function DSA() {
   useEffect(() => {
     if (id) {
       axios
-        .get(url+`/usercode/code/${id}`)
+        .get(url+`usercode/code/${id}`)
         .then((response) => {
           console.log(response.data.code);
           file.content = response.data.code;

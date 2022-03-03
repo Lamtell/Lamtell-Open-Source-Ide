@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 const env = process.env.NODE_ENV; // current environment
 let url
 if(env === "development") {
-    url = 'http://localhost:5000'
+    url = 'http://localhost:5000/'
 }else{
     url = window.location.href
 }
@@ -27,7 +27,7 @@ export const addFile = (fi) => {
 
 export const savefile = (file, lang, sessionId) => async dispatch => {
     console.log(lang)
-   return await axios.post(url+"/codesave/", {
+   return await axios.post(url+"codesave/", {
     code: file.content,
     name: file.name,
     lang:lang,
