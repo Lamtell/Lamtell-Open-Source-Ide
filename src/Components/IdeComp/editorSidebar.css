@@ -1,0 +1,151 @@
+.editor-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 48px;
+    height: calc(100vh - 2.4vh);
+    background-color: var(--gutterbackground);
+}
+
+.sidenav-buttons{
+    font-size: 24px;
+    align-items: center;
+    transition: 0.2s;
+    justify-content: center;
+    color: var(--sidenavcolor);
+    cursor: pointer;
+    padding: 15px;
+    z-index: 1;
+}
+
+.sidenav-buttons:focus {
+    outline: 0;
+}
+
+.sidenav-buttons:before {
+    content: attr(data-text);
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    left: 100%;
+    margin-left:1px;
+    width:max-content;
+    padding:3px;
+    background:var(--gutterbackground);
+    color: var(--white);
+    text-align:center;
+    display:none;
+    font-size: 12px;
+    z-index: 3;
+    border: 1px solid var(--sidenavcolor);
+}
+
+.sidenav-buttons:hover:before {
+    display:block;
+  }
+  
+/*  Trying out Arrow in tool tip
+ .sidenav-buttons:after {
+    content: "";
+    position:absolute;
+    left:100%;
+    margin-left:-13px;
+    top:50%;
+    transform:translateY(-50%);
+    
+    border:8px solid #272727;;
+    border-color: transparent #272727 transparent transparent;
+    display:none;
+  }
+  
+.sidenav-buttons:hover:before, .sidenav-buttons:hover:after {
+    display:block;
+  } */
+
+.sidenav_button_active{
+      color: white !important;
+      user-select: none;
+}
+
+.sidenav-buttons:active{
+      color: var(--sidenavcolor);
+      transform: scale(0.9);
+    }
+    
+.sidenav-buttons:hover{ 
+    color: white;
+    transform: scale(1.1);
+}
+
+.upper-icons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 48px;
+    flex:9
+}
+
+.lower-icons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 48px;
+    flex:1
+}
+
+.user-option,.setting-option{
+    position: absolute;
+    z-index: 4 !important;
+    background-color: var(--useroptionbackgroundcolor);
+    color: var(--sidenavcolor);
+    left:52px;
+    top:83vh;
+    min-width: 130px;
+}
+
+ul{
+    list-style-type: none;
+    margin:0;
+    padding: 5px;
+    box-shadow: rgba(131, 129, 129, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+li{
+   border-bottom: 1px solid rgb(116, 114, 114); 
+   padding: 5px;
+   font-size: 14px;
+   transition: 600ms;
+}
+
+.options-link{
+    color: white !important; 
+    transition: 600ms;
+    width: 100%;
+}
+
+
+li:hover{
+    background-color: var(--footerbackground);
+    color: white !important; 
+}
+
+.Overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    
+}
+#fontSize, #fontStyle, #fontWeight, #theme{
+    background-color: #242121;
+    border: none !important;
+}
+
+#fontSize{
+    border: none;
+}

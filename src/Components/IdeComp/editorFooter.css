@@ -1,0 +1,101 @@
+.texteditor_footer {
+    width: 100vw;
+    left: 0;
+    position: absolute;
+    height: 2.6vh;
+    background-color: var(--footerbackground);
+    color: white;
+    z-index: 3;
+    top: 97.3vh;
+    display: flex;
+    justify-content: space-between;
+}
+    
+.side_footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    cursor: pointer;
+}
+    
+.footer_text {
+    font-size: 1.6vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transform: scale(0.97);
+    cursor: pointer;
+}
+    
+.footer_text:nth-child(3) {
+    margin-left: 0;
+    padding-left: 0.2vw;
+}
+
+    
+.l_footer{
+    margin-left: 0.5vw;
+    margin-top: 0.1vh;
+}
+    
+.r_footer{
+    margin-right: 1.5vw;
+    margin-top: 0.2vh;
+}
+
+.file-name{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    user-select: none;
+    width: 80px;
+    color: white;
+}
+
+.file-name:focus{
+    background-color: transparent;
+    outline: none !important;
+}
+
+.footer_text:hover:not(.disabled) {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.change_lang {
+    margin-left: 30px;
+    font-size: 1.5vh;
+}
+
+.language-options {
+    position: absolute;
+    bottom: 2.8vh;
+    flex-direction: column;
+    background-color: var(--footerbackground);
+    color: white;
+    left:35vh;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.language-buttons {
+    font-size: 1.45vh;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transform: scale(0.97);
+    cursor: pointer;
+    border-bottom: 1px solid white;
+}
+
+.language-buttons:hover {
+    color: var(--footerbackground);
+    background-color: white;
+}
+#language{
+    color:white;
+    border: none;
+    font-size: inherit;
+    background-color: var(--footerbackground);
+}
+
+.language-options{
+    transform: translateX(0px) scale(1) translateZ(0px);
+    transition: 0.6ms;
+}

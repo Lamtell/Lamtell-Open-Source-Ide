@@ -1,0 +1,23 @@
+:root {
+  --bodybackground: #1e1e1e;
+  --footerbackground: rgb(0, 122, 204);
+  --gutterbackground: #333333;
+  --outputtextcolor: #838281;
+  --sidenavcolor: #6b6a67;
+  --useroptionbackgroundcolor: #242121;
+  --loginsignupcolor: #c4c3ca;
+  --white: white;
+}
+
+body{
+  font-family: "Space Mono", monospace;
+  box-sizing: border-box;
+  background-color: #1e1e1e;
+  color: white;
+  overflow: hidden;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}

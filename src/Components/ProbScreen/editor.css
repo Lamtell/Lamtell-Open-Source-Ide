@@ -1,0 +1,84 @@
+
+.ps_editor{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    overflow: auto;
+    align-items: center;
+}
+
+.ps_editor_buttons{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.ps_inout{
+  height: 10vh;
+  margin: 5px;
+  width: 99%;
+  resize: auto;
+  padding: 10px;
+  background-color: var(--gutterbackground);
+  color: var(--sidenavcolor);
+}
+
+.outWindow{
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.inoutTextarea{
+  padding: 10px;
+  display: none;
+  justify-content: center;
+}
+
+
+.inoutTitle{
+  padding-left: 10px;
+}
+
+
+.inoutButton{
+  background-color: #181818;
+  color: white;
+  border: 1px black solid;
+}
+
+.failed {
+  color: red;
+}
+
+.passed{
+  color: greenyellow;
+}
+
+.left{
+  display: flex;
+  flex-direction: column;
+  margin-top: 4px;
+  width: 20%;
+}
+
+.outputCard{
+  display: none;
+  flex-direction: row;
+  margin: 10px;
+  background-color: #181818;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: rgba(78, 78, 78, 0.25) 0px 54px 55px, rgba(78, 78, 78, 0.25) 0px -12px 30px, rgba(78, 78, 78, 0.25) 0px 4px 6px, rgba(78, 78, 78, 0.25) 0px 12px 13px, rgba(78, 78, 78, 0.25) 0px -3px 5px;
+}
+
+.inoutScreen{
+  display: none;
+  width: 80%;
+}
+
+.ps_editor{
+  overflow-y: hidden;
+}

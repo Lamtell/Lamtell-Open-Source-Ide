@@ -1,0 +1,61 @@
+.snippet-screen{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background-color: var(--bodybackground);
+    align-items: center;
+    z-index: 2;
+}
+
+.snippet-form{
+    width: 70vw;
+    height: 70vh;
+}
+
+.upper-input{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid white;
+    background-color: var(--bodybackground);
+}
+
+.snippet-description{
+    width: 50%;
+    background-color: transparent;
+    color: white;
+}
+
+.snippet-tabtrigger{
+    width: 50%;
+    background-color: transparent;
+    color: white;
+
+}
+
+.snipper-editor{
+    border: 1px solid white;
+}
+
+.snippet-submit{
+    width: 100%;
+    color: white;
+}
+
+.snippet-close-button{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    font-size: 48px;
+    transition: 400ms;
+}
+
+.snippet-close-button:hover{
+    position: absolute;
+    left: 30px;
+    transform: scale(1.2);
+    top: 30px;
+    font-size: 48px;
+}

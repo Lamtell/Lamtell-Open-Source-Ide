@@ -1,0 +1,69 @@
+.DSA {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    flex: 1;
+    background-color: var(--bodybackground);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.gutter.gutter-horizontal {
+    cursor: col-resize;
+    width: 15px !important;
+    border-right: 1px solid var(--gutterbackground);
+}
+
+.gutter.gutter-vertical {
+    cursor: row-resize;
+   
+}
+
+.gutter.gutter-horizontal:hover, .gutter.gutter-vertical:hover{
+    background-color: var(--gutterbackground);
+}
+
+.split-flex {
+    display: flex;
+    flex-direction: row;
+    width: calc(100vw - 48px);
+}
+
+.output-input{
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 2.4vh);
+    color: var(--outputtextcolor);
+}
+
+.output-input-heading{
+    border-bottom:1px solid var(--gutterbackground);
+    padding: 5px; 
+}
+
+.output{
+    display: flex;
+    flex-direction: column;
+    border-top:1px solid var(--gutterbackground);
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-textarea, .output-textarea{
+    width: 100%;
+    height: 100%;
+    border: none;
+    user-select: none;
+    color: #8d8c88;
+    background-color: transparent;
+}
+
+.input-textarea:focus, .output-textarea:focus{
+    outline: none !important;
+}

@@ -1,0 +1,27 @@
+.problem{
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 2.4vh);
+}
+
+.problem_screen{
+width: 100%;
+}
+
+.url_input{
+  width: 100%;
+  box-shadow: rgba(78, 78, 78, 0.25) 0px 54px 55px, rgba(78, 78, 78, 0.25) 0px -12px 30px, rgba(78, 78, 78, 0.25) 0px 4px 6px, rgba(78, 78, 78, 0.25) 0px 12px 13px, rgba(78, 78, 78, 0.25) 0px -3px 5px;
+}
+
+.form-style{
+  box-shadow: rgba(78, 78, 78, 0.25) 0px 54px 55px, rgba(78, 78, 78, 0.25) 0px -12px 30px, rgba(78, 78, 78, 0.25) 0px 4px 6px, rgba(78, 78, 78, 0.25) 0px 12px 13px, rgba(78, 78, 78, 0.25) 0px -3px 5px;
+}
+
+iframe{
+  width: 100%;
+  height: 100%;
+}
+
+.iframe_div, .ps_editor{
+  height: calc(100vh - 2.4vh);
+}

@@ -1,0 +1,13 @@
+.lectureRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.lectureRow h1{
+    border: 2px black solid;
+}
+
+.openCode{
+    border:2px black solid; 
+}
