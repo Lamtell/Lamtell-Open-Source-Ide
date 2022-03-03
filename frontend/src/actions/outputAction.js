@@ -5,7 +5,7 @@ export const runCode = ( code,language,input,testcases) => async dispatch => {
     if(env === "development") {
         url = 'http://localhost:5000'
     }else{
-        url = window.location.hostname
+        url = window.location.href
     }
     console.log(input, language)
     if(language === "python"){

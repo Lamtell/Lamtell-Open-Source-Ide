@@ -13,7 +13,7 @@ let url
 if(env === "development") {
     url = 'http://localhost:5000'
 }else{
-  url = window.location.hostname
+  url = window.location.href
 }
 
 //let closeLangOption = false
