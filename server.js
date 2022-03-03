@@ -8,6 +8,7 @@ const codeSave = require('./routes/codeSave')
 const shareCode = require('./routes/shareCode')
 const runCode = require('./routes/runCode')
 const mongoose = require("mongoose");
+const path = require('path')
 const problemStatement = require("./routes/problemStatement");
 const firebase = require("firebase/app");
 require("firebase/firestore");
@@ -34,6 +35,15 @@ mongoose.connect(process.env.DATABASE_URL, {
 const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Mongoose"));
+
+
+if (true) {
+  app.use(express.static(path.join(__dirname, '/frontendStatic')))
+
+  app.get('/', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontendStatic', 'index.html'))
+  )
+}
 
 app.use(express.json());
 app.use((req, res, next) => {
