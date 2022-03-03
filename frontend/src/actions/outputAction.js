@@ -3,7 +3,9 @@ export const runCode = ( code,language,input,testcases) => async dispatch => {
     const env = process.env.NODE_ENV; // current environment
     let url
     if(env === "development") {
-        url = 'http://localhost:5000/'
+        url = 'http://localhost:5000'
+    }else{
+        url = window.location.hostname
     }
     console.log(input, language)
     if(language === "python"){
@@ -14,7 +16,7 @@ export const runCode = ( code,language,input,testcases) => async dispatch => {
     if(language === "python"){
         language = "python3"
     }
-    return await axios.post( url+'runcode', {
+    return await axios.post( url+'/runcode', {
         language: language, 
         stdin:input,
         versionIndex: (language === "cpp") ? "5" : "0",

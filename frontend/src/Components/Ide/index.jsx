@@ -13,6 +13,8 @@ const env = process.env.NODE_ENV;
 let url
 if(env === "development") {
     url = 'http://localhost:5000'
+}else{
+  url = window.location.hostname
 }
 
 
