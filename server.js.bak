@@ -9,7 +9,7 @@ const shareCode = require('./routes/shareCode')
 const runCode = require('./routes/runCode')
 const mongoose = require("mongoose");
 const path = require('path')
-const problemStatement = require("./routes/problemstatement");
+const problemStatement = require("./routes/problemStatement");
 const firebase = require("firebase/app");
 require("firebase/firestore");
 require("firebase/storage");
