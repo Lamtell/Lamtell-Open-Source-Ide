@@ -1,0 +1,11 @@
+Example Enviroment Variables
+DATABASE_URL = mongodb+srv://lamtelloss:YoCqg3QQDDc1Dyfv@lamtelloss.jpjxl.mongodb.net/lamtelloss?retryWrites=true&w=majority
+CLIENT_ID=2008a794491aa94cf2cf9d9d449f07d6
+CLIENT_SECRET=7ddbc029bb5c5f0713a2b0edb8c5d579b29ac3a973ad78a2f95aa3da8751203c
+API_KEY=AIzaSyAZTe86G7rBGhsLjBFsz_D-1c8AjYpyQqU
+AUTH_DOMAIN=lamtell.firebaseapp.com
+PROJECT_ID=lamtell
+STORAGE_BUCKET=lamtell.appspot.com
+MESSAGING_SENDER_ID=786438932315
+APP_ID=1:786438932315:web:56ea7a2f0cd1296a8bbc7e
+MEASUREMENT_ID=G-YNJVJ2TC27
