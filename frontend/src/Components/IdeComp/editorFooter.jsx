@@ -115,7 +115,7 @@ function Footer(props) {
       input:inout[0].content,
       output:inout[1].content
     }).then(res => {
-      navigator.clipboard.writeText(window.location + res.data.response._id);
+      navigator.clipboard.writeText(window.location.href + res.data.response._id);
       alert("Copied the text");
     })
   };

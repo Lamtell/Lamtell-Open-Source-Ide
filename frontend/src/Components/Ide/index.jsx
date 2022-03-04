@@ -59,7 +59,7 @@ function DSA() {
     } else if(shareId){
       console.log("WORKING")
       axios
-      .get(url+`/share/${shareId}`)
+      .get(url+`share/${shareId}`)
       .then((response) => {
         file.content = response.data.code;
         setLoading(true);
