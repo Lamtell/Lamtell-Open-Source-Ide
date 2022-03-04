@@ -39,7 +39,7 @@ export default function SignUp() {
           localStorage.setItem("currentUserId", JSON.stringify(response.data.id))
           toast.update(id, { render: `Hi, ${userName.value}`, type: "success", isLoading: false, autoClose: 1000,closeButton: true});
           dispatch(loginUser(response.data.name));
-          let loginReq = axios.post(url+"/login", {
+          let loginReq = axios.post(url+"login", {
             email: userEmail.value,
             password: userPassword.value,
             })
