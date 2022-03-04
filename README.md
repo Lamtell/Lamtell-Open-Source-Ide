@@ -1,3 +1,3 @@
-# Lamtell Editor
+# Lamtell Ide
 
 This is probably the best open source editor you can you find for competitive programming, data structures and algorithms and much more. Comes with 60+ language support and 50+ themes an that not all if you are solving codeforces question just simply paste the link and solve it on out platform that has a auto check feature using this all the test cases in a question automatically checked and evaluated removing the hassle of splitting screen and comparing by yourself. You can create your own snippets and save your code, upload and download files, share your code to every one just by send a link. If you wanna find out what else we offer go to out YouTube channel and watch a simple tutorial on how to use it
