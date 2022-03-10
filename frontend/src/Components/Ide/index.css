@@ -67,3 +67,6 @@
 .input-textarea:focus, .output-textarea:focus{
     outline: none !important;
 }
+.editor-scrollable{
+    left: 80px !important;
+}
