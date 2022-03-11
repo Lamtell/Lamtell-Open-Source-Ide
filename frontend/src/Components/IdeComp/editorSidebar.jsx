@@ -117,10 +117,10 @@ function Sidebar(props) {
         </li>
         <li className="settingOptions">
         <select id="fontStyle" className="options-link" onChange={(e) => props.fStyle(e.target.value)}>
-        <option value="none">None</option>
+          <option value="monospace">Monospace</option>
+          <option value="none">None</option>
           <option value="cursive">Cursive</option>
           <option value="fandsong">Fangsong</option>
-          <option value="monospace">Monospace</option>
           <option value="fantasy">Fantasy</option>
           <option value="sans-serif">Sans Serif</option>
         </select>

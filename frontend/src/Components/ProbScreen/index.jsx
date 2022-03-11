@@ -9,7 +9,7 @@ import PS from "./problemStatement"
 
 function Problem() {
   const [theme, setTheme] = useState("vs-dark");
-  const [fontStyle, setFontStyle] = useState("none");
+  const [fontStyle, setFontStyle] = useState("monospace");
   const [fontSize, setFontSize] = useState(20);
   return (
     <>

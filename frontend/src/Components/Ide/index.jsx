@@ -21,7 +21,7 @@ if(env === "development") {
 function DSA() {
   const { id,shareId } = useParams();
   const [theme, setTheme] = useState("vs-dark");
-  const [fontStyle, setFontStyle] = useState("none");
+  const [fontStyle, setFontStyle] = useState("monospace");
   const [fontSize, setFontSize] = useState(20);
   const file = useSelector((state) => state.file);
   const [isThemeLoaded, setIsThemeLoaded] = useState(false);
