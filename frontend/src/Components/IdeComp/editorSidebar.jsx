@@ -296,20 +296,13 @@ function Sidebar(props) {
       transition={{ delay: 0.1, duration: 0.1 }}
       className="editor-sidebar"
     >
-      {/* <div>
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          style={ModalStyles}
-          contentLabel="Example Modal"
-          overlayClassName="Overlay"
-          ariaHideApp={false}
+      <button
+          className="home sidenav-buttons"
+          data-text="Go to Home"
+          onClick={() => {navigate("/")}}
         >
-          <button onClick={closeModal}>close</button>
-          <input id="url_input" value={copyUrl} />
-          <button onClick={handleCopy}>Copy Url</button>
-        </Modal>
-      </div> */}
+          <i className="fas fa-home"></i>
+        </button>
       <div className="upper-icons">
         <button
           className="run_code sidenav-buttons"
