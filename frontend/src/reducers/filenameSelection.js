@@ -5,7 +5,7 @@ export const DSAFiles = [
         "id": "sa1GQ3eYSvOv1kRvhEoQV",
         "content": 
 `#include<bits/stdc++.h>
-
+using namespace std;
 int main ()
 {
   cout<<"Hello World"<<endl;

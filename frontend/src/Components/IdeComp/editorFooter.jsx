@@ -22,6 +22,7 @@ function Footer(props) {
   const dispatch = useDispatch();
   const inout = useSelector((state) => state.inout);
   const editorLang = useSelector((state) => state.editorLang);
+  const [ext, setExtension] = useState(".c")
   const [cookies] = useCookies(["cookie-name"]);
   const [Ln, setLn] = useState(1);
   const [Col, setCol] = useState(1);
@@ -98,6 +99,77 @@ function Footer(props) {
     "J": "jlang",
     "Brainf**k":"brainfuck"
   };
+  const extension = {
+    "c": ".c",
+    "c99": ".c",
+    "cpp": ".cpp",
+    "cpp14": ".cpp",
+    "cpp17": ".cpp",
+    "php": ".php",
+    "perl": ".perl",
+    "python2": ".py",
+    "python3": ".py",
+    "ruby": ".ruby",
+    "go": ".go",
+    "scala": ".scala",
+    "bash": ".bash",
+    "sql": ".sql",
+    "pascal": ".pas",
+    "csharp": ".csx",
+    "vbn": ".vb",
+    "haskell": ".ha",
+    "objc": ".m",
+    "swift": ".swift",
+    "groovy": ".groovy",
+    "fortran": ".f95",
+    "lua": ".lua",
+    "tcl": ".tcl",
+    "hack": ".hack",
+    "rust": ".rs",
+    "d": ".d",
+    "ada": ".adb",
+    "java": ".java",
+    "r": ".r",
+    "freebasic": ".bas",
+    "verolig": ".v",
+    "cobol": ".cobc",
+    "dart": ".dart",
+    "yabasic": ".bas",
+    "clojure": ".clj",
+    "nodejs": ".js",
+    "scheme": ".sc",
+    "forth": ".fth",
+    "prolog": ".pg",
+    "octave": ".m",
+    "coffeescript": ".coffee",
+    "icon": ".icn",
+    "fsharp": ".fs",
+    "nasm": ".asm",
+    "gccasm": ".s",
+    "intercal": ".i",
+    "nemerle": ".n",
+    "ocaml": ".ml",
+    "unlambda": ".un",
+    "picolisp": ".pil",
+    "spidermonkey": ".js",
+    "rhino": ".js",
+    "clisp": ".lisp",
+    "elixir": ".exs",
+    "factor": ".factor",
+    "falcon": ".fl",
+    "fantom": ".fan",
+    "nim": ".nim",
+    "pike": ".pike",
+    "smalltalk": ".gst",
+    "mozart": ".oza",
+    "lolcode": ".lo",
+    "racket": ".rkt",
+    "kotlin": ".kt",
+    "whitespace": ".ws",
+    "erlang": ".erl",
+    "jlang": ".jl",
+    "brainfuck":".bf"
+  }
   const handleNameChange = (event) => {
     setFileName(event.target.value);
     dispatch(changeFileName(event.target.value));
@@ -107,6 +179,7 @@ function Footer(props) {
     dispatch(savefile(file, editorLang,cookies.sessId));
   };
   const changeLangFunc = (value) => {
+    setExtension(extension[`${value}`])
     dispatch(changeLang(value))
   }
   const handleShareFile = (e) => {
@@ -171,7 +244,7 @@ function Footer(props) {
       var option = document.createElement("option");
       option.text = key;
       option.value = languageList[key];
-      option.className = languageList[key];
+      option.className = extension[key]
       select.add(option);
     }
   }, []);
@@ -193,7 +266,7 @@ function Footer(props) {
           <input
             className="file-name"
             onChange={handleNameChange}
-            value={fileName}
+            value={'main'+ext}
           />
         </span>
         <span className="footer_text l_footer error" onClick={handleFileSave}>
