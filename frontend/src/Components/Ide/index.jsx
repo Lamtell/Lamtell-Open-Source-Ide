@@ -44,6 +44,7 @@ function DSA() {
   }
 
   function handleEditorChange(value) {
+    localStorage.setItem("usercode", JSON.stringify(value))
     dispatch(addContent(value));
   }
 
@@ -95,6 +96,7 @@ function DSA() {
   }
   //FOR SNIPPET DEV
   function handleEditorDidMount(editor, monaco) {
+    localStorage.setItem("usercode", JSON.stringify(file.content))
     editorRef.current = editor;
     if (
       localStorage.getItem("description") &&
@@ -142,8 +144,8 @@ function DSA() {
                 theme={isThemeLoaded ? "definedTheme": theme}
                 language={editorLanguage}
                 className="codeText"
-                defaultValue={snippet}
-                value={file.content}
+                defaultValue={file.content}
+                value={JSON.parse(localStorage.getItem("usercode"))}
                 options={{ fontSize: fontSize,fontFamily:fontStyle, fontWeight:fontWeight}}
                 onMount={handleEditorDidMount}
                 onChange={handleEditorChange}
