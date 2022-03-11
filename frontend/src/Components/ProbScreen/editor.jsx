@@ -59,6 +59,7 @@ function EditorPS(props) {
   // }
 
   function handleEditorChange(value) {
+    localStorage.setItem("usercode", JSON.stringify(value))
     dispatch(addContent(value));
   }
 
@@ -80,9 +81,8 @@ function EditorPS(props) {
   }, [props.theme])
   
   function handleEditorDidMount(editor, monaco) {
+    localStorage.setItem("usercode", JSON.stringify(file.content))
     editorRef.current = editor;
-    //monaco editor custom language color
-    // https://microsoft.github.io/monaco-editor/playground.html#extending-language-services-custom-language
     if (
       localStorage.getItem("description") &&
       localStorage.getItem("tabtrigger") &&
@@ -146,32 +146,12 @@ function EditorPS(props) {
             theme={isThemeLoaded ? "definedTheme": props.theme}
             className="codeText ps_monaco"
             language={editorLanguage}
-            defaultValue={DSAFiles[0].content}
+            defaultValue={file.content}
+            value={JSON.parse(localStorage.getItem("usercode"))}
             onMount={handleEditorDidMount}
             onChange={handleEditorChange}
             options={{ fontSize: props.fSize,fontFamily:props.fStyle}}
             defaultLanguage="cpp"/>
-
-        {/* <div className="ps_editor_buttons">
-          <button
-            className="btn"
-            onClick={() => {
-              setDivInout(true);
-            }}
-            style={{ marginRight: "10px" }}
-          >
-            Edit/View Test cases
-          </button>
-          <button
-            className="btn"
-            onClick={() => {
-              setDivInout(true);
-            }}
-            style={{ backgroundColor: "green", color: "white !important" }}
-          >
-            Run test cases
-          </button>
-        </div> */}
       </div>
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
