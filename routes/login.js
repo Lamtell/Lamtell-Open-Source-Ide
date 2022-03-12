@@ -4,9 +4,7 @@ const firebase = require("firebase/app");
 const UserSession = require("../models/userSession");
 const UserInfo = require("../models/userInfo")
 const { v4: uuidv4 } = require('uuid');
-const { response } = require("express");
 require("firebase/auth");
-const MAX_AGE = 1000 * 60 * 60 * 3; // Three hours
 router.post("/", (req, res) => {
   console.log(req.body)
   firebase
@@ -16,7 +14,7 @@ router.post("/", (req, res) => {
        //console.log(result.code)
         UserInfo.findOne({email:req.body.email}).then((userinfo) => {
           console.log(userinfo)
-          UserSession.create({sessId:uuidv4(),expire:MAX_AGE, user:result.user.uid}).then((response) => {
+          UserSession.create({sessId:uuidv4() , user:result.user.uid}).then((response) => {
             res.json({ message: "Login Successful", status:200,name:userinfo.name,sessId:response.sessId});
           })
         })

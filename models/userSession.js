@@ -5,10 +5,6 @@ const userSessions = new mongoose.Schema({
         type:String,
         required: true
     },
-    expire:{
-      type:Number,
-      required: true
-    },
     user:{
         type:String,
         required:true
