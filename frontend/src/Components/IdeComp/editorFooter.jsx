@@ -218,16 +218,13 @@ function Footer(props) {
           langOptions = false;
         }
       });
-    document.onkeyup = function (e) {
-      if (e.key === "Control") isCtrl = false;
-    };
-    document.onkeydown = function (e) {
-      if (e.key === "Control") isCtrl = true;
-      if (e.key === "s" && isCtrl === true) {
-        dispatch(savefile(file,editorLang, cookies.sessId));
-        return false;
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 's' && e.ctrlKey) {
+          e.preventDefault();
+          dispatch(savefile(file,editorLang, cookies.sessId));
       }
-    };
+    });
+  
     const codeText = document.getElementsByClassName("codeText")[0];
     codeText.addEventListener("click", function () {
       //commented because creating error in ps screen

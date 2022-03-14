@@ -286,6 +286,13 @@ function Sidebar(props) {
           }
       }
     });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "F2") {
+        codeRun()
+        return false
+      }
+    })
   }, []);
 
   return (
