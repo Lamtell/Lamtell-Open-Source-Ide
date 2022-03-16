@@ -4,7 +4,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Moment from 'react-moment';
 import "./savedCodeTable.css";
-import { useCookies } from "react-cookie";
 let userCode = [];
 
 let globalUrl =
@@ -15,12 +14,11 @@ let globalUrl =
 
 export default function UserCode() {
   const [codeInfo, setCodeInfo] = useState([]);
-  const [cookies] = useCookies(["cookie-name"]);
+  const userId = localStorage.getItem("userId")
   useEffect(() => {
     (() => {
-
       axios(
-        `${globalUrl}usercode/${cookies.sessId}`
+        `${globalUrl}usercode/${userId}`
       ).then((response) => {
         if (response.data.status === 200) {
           response.data.code.forEach((code, index) => {

@@ -3,7 +3,6 @@ import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
 import { addFile, loginUser } from "../../actions";
 import { runCode } from "../../actions/outputAction";
-import { useCookies } from "react-cookie";
 import axios from "axios";
 import { sampleTestOutput } from "../../actions";
 import { motion } from "framer-motion"
@@ -30,8 +29,7 @@ function Sidebar(props) {
   const inout = useSelector((state) => state.inout);
   const editorLang = useSelector((state) => state.editorLang);
   const userName = useSelector((state) => state.user);
-  const [cookies, setCookie] = useCookies(["cookie-name"]);
-
+  const userId = localStorage.getItem("userId")
   function openModal() {
     axios
       .post(url + "share", {
@@ -46,14 +44,14 @@ function Sidebar(props) {
   }
 
   const handleLogout = () => {
-    let logoutReq = axios.get(url + `logout?id=${cookies.sessId}`);
-
+    let logoutReq = axios.get(url + `logout?id=${userId}`);
+    localStorage.removeItem("userId")
     const id = toast.loading("Logging you out!");
 
     logoutReq.then((response) => {
       console.log(response);
       if (response.data.status === 200) {
-        setCookie("sessId", response.data.sessId);
+        // setCookie("sessId", response.data.sessId);
         dispatch(loginUser("Anonymous"));
         toast.update(id, {
           render: `See you soon, ${userName}`,

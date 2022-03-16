@@ -5,6 +5,7 @@ const UserCode = require("../models/userCode")
 
 router.post("/", async (req, res) => {
   UserSession.findOne({ sessId: req.body.sessionId }).then((response) => {
+    console.log(req.body.sessionId)
     if (response) {
     console.log(req.body)
     const code =req.body.code

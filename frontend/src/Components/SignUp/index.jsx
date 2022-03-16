@@ -5,7 +5,6 @@ import { loginUser } from "../../actions";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"
 import { useEffect } from "react";
-import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,7 +20,6 @@ if(env === "development") {
 export default function SignUp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [, setCookie,] = useCookies(['cookie-name']);
 
   useEffect(() => {
     const submitButton = document.getElementById("submit");
@@ -46,7 +44,7 @@ export default function SignUp() {
           const id_login = toast.loading("Logging you in!");
           loginReq.then((response) => {
             console.log("here")
-            setCookie("sessId",response.data.sessId)
+            localStorage.setItem('userId', response.data.sessId)
             toast.update(id_login, { render: `Welcome!`, type: "success", isLoading: false, autoClose: 1000, closeButton: true });
             navigate("/");
           });

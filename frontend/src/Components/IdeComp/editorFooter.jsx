@@ -5,7 +5,6 @@ import { changeFileName, savefile} from "../../actions";
 import { motion } from "framer-motion"
 import { changeLang } from "../../actions";
 import "react-toastify/dist/ReactToastify.css";
-import { useCookies } from "react-cookie";
 import axios from "axios";
 import "./editorFooter.css";
 const env = process.env.NODE_ENV; // current environment
@@ -18,12 +17,12 @@ if(env === "development") {
 
 //let closeLangOption = false
 function Footer(props) {
-  const [fileName, setFileName] = useState(props.fileName);
+  const [fileName, setFileName] = useState('main.c');
   const dispatch = useDispatch();
   const inout = useSelector((state) => state.inout);
   const editorLang = useSelector((state) => state.editorLang);
   const [ext, setExtension] = useState(".c")
-  const [cookies] = useCookies(["cookie-name"]);
+  const userId = localStorage.getItem("userId")
   const [Ln, setLn] = useState(1);
   const [Col, setCol] = useState(1);
   const file = useSelector((state) => state.file);
@@ -171,15 +170,17 @@ function Footer(props) {
     "brainfuck":".bf"
   }
   const handleNameChange = (event) => {
+    console.log(event.target.value)
     setFileName(event.target.value);
     dispatch(changeFileName(event.target.value));
   };
 
   const handleFileSave = () => {
-    dispatch(savefile(file, editorLang,cookies.sessId));
+    dispatch(savefile(file, editorLang,userId));
   };
   const changeLangFunc = (value) => {
     setExtension(extension[`${value}`])
+    setFileName(() => 'main'+ extension[`${value}`]);
     dispatch(changeLang(value))
   }
   const handleShareFile = (e) => {
@@ -193,9 +194,6 @@ function Footer(props) {
     })
   };
 
-  useEffect(() => {
-    setFileName(props.fileName);
-  }, [props.fileName]);
 
   useEffect(() => {
     let isCtrl = false,
@@ -221,7 +219,7 @@ function Footer(props) {
     document.addEventListener('keydown', (e) => {
       if (e.key === 's' && e.ctrlKey) {
           e.preventDefault();
-          dispatch(savefile(file,editorLang, cookies.sessId));
+          dispatch(savefile(file,editorLang, userId));
       }
     });
   
@@ -245,7 +243,6 @@ function Footer(props) {
       select.add(option);
     }
   }, []);
-
   return (    
     <motion.footer
       style={{zIndex:"6"}}
@@ -263,7 +260,7 @@ function Footer(props) {
           <input
             className="file-name"
             onChange={handleNameChange}
-            value={'main'+ext}
+            value={fileName}
           />
         </span>
         <span className="footer_text l_footer error" onClick={handleFileSave}>

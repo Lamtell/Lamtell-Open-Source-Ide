@@ -6,7 +6,6 @@ import { motion } from "framer-motion"
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../actions";
 import "./styles.css";
@@ -22,7 +21,6 @@ if(env === "development") {
 export default function Login() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const [, setCookie] = useCookies(["cookie-name"]);
   useEffect(() => {
     const submitButton = document.getElementById("submit");
     const userPassword = document.getElementById("password");
@@ -39,7 +37,9 @@ export default function Login() {
       loginReq.then((response) => {
         console.log(response)
         if(response.data.status === 200){
-          setCookie("sessId", response.data.sessId);
+          // setCookie("sessId", response.data.sessId);
+          console.log(response.data.sessId)
+          localStorage.setItem('userId', response.data.sessId)
           dispatch(loginUser(response.data.name));
           toast.update(id, {
             render: `Hi, ${response.data.name}`,
