@@ -4,17 +4,20 @@ import Editor from "@monaco-editor/react";
 import loader from "@monaco-editor/loader"
 import Footer from "../IdeComp/editorFooter";
 import { addContent } from "../../actions";
+import { sampleTestOutput } from "../../actions";
 import { motion } from "framer-motion"
-import { DSAFiles } from "../../reducers/filenameSelection";
+import { runTestCode } from "../../actions/outputAction";
 import "./editor.css";
 
 function EditorPS(props) {
   const [outputWindow, setoutputWindow] = useState(false);
-  const [psInput, setpsInput] = useState("Please Import Problem Statement to see input here");
-  const [psOutput, setpsOutput] = useState("Please Import Problem Statement to see Expected Output here");
+  const [divInout, setDivInout] = useState(false);
   const [crStdin, setcrStdin] = useState("");
+  const [customIn, setCustomIn] = useState('')
   const [crExOut, setcrExOut] = useState("");
   const [crYrOut, setcrYrOut] = useState("");
+  const [outputValue, setOutputValue] = useState("");
+  const inout = useSelector((state) => state.inout);
   const file = useSelector((state) => state.file);
   const testOutput = useSelector((state) => state.testOutput);
   const [isThemeLoaded, setIsThemeLoaded] = useState(false);
@@ -61,6 +64,10 @@ function EditorPS(props) {
   function handleEditorChange(value) {
     localStorage.setItem("usercode", JSON.stringify(value))
     dispatch(addContent(value));
+  }
+  
+  function handleInput(e) {
+    setCustomIn(e.target.value)
   }
 
   useEffect(() => {
@@ -110,13 +117,12 @@ function EditorPS(props) {
 
   useEffect(() => {
     if (document.getElementsByClassName("inoutTextarea")[0]) {
-      if (samples[0].i1 !== "") {
-        setpsInput(samples[0].i + samples[1].i + samples[2].i);
-        setpsOutput(samples[0].o + "\n" + samples[1].o + "\n" + samples[2].o);
-      }
       document.getElementsByClassName("inoutTextarea")[0].scrollIntoView();
     }
-  }, [ outputWindow, samples]);
+    document.documentElement.addEventListener("output", (e) => {
+      setOutputValue(e.detail.output);
+    });
+  }, [divInout]);
 
     useEffect(() => {
       const outputCard = document.getElementsByClassName("outputCard")[0]
@@ -137,6 +143,10 @@ function EditorPS(props) {
       setcrYrOut(testOutput[index].o)
     }
 
+    function handleInput(e) {
+      inout[0].content = e.target.value;
+    }
+
     return(
       <div style={{overflow:"auto", height: "calc(100vh - 2.4vh)"}}>
         <div className="ps_editor">
@@ -152,15 +162,43 @@ function EditorPS(props) {
             onChange={handleEditorChange}
             options={{ fontSize: props.fSize,fontFamily:props.fStyle}}
             defaultLanguage="cpp"/>
+          <div className="ps_editor_buttons">
+          <button
+            className="btn"
+            onClick={() => {
+              console.log("WORKING")
+              setDivInout(true);
+            }}
+            style={{ marginRight: "10px" }}
+          >
+            Add Input
+          </button>
+          <button
+            className="btn"
+            onClick={() => {
+              dispatch(runTestCode(file.content, editorLang, customIn, samples)).then((e) => {
+                dispatch(sampleTestOutput(e.data.output));
+                const tcevent = new CustomEvent("tcOutput", {
+                  detail: { openWindow: true, message: "success" },
+                });
+                document.documentElement.dispatchEvent(tcevent);
+              })
+            }}
+            style={{ backgroundColor: "green", color: "white !important" }}
+          >
+            Run TestCases
+          </button>
+        </div>
       </div>
+      {divInout ? 
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type:"tween", duration: 0.2 }} 
           className="inoutTextarea">
-             <textarea className="ps_inout" onChange={setpsInput} value={psInput}/>
-             <textarea className="ps_inout" onChange={setpsOutput} value={psOutput}/>
-          </motion.div>
+             <textarea className="ps_inout" onChange={handleInput}/>
+             <textarea className="ps_inout" defaultValue={outputValue} readOnly/>
+          </motion.div> : ""}
           <div className="outputCard">
           <div className="left">
           {samples.map((element,index) => {

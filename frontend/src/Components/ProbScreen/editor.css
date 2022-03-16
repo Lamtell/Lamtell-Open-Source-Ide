@@ -33,7 +33,7 @@
 
 .inoutTextarea{
   padding: 10px;
-  display: none;
+  display: flex;
   justify-content: center;
 }
 

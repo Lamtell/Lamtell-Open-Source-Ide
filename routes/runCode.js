@@ -7,17 +7,8 @@ router.post('/', async(req, res, next) => {
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
   }
-  let body1  = {
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-  }
-  let body2  = {
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-  }
   console.log(req.body)
-  let output = []
-  if((req.body.stdin === '' && req.body.testcases[0].i === '') || req.body.stdin !== ''){
+  if((req.body.stdin === ''|| req.body.stdin !== '')){
     console.log("WORK")
     body.stdin = req.body.stdin
     body.language = req.body.language
@@ -29,7 +20,24 @@ router.post('/', async(req, res, next) => {
       headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json())
     .then(json => res.send(json));
-  }else if(req.body.testcases[0].i !== ''){
+  }
+});
+
+router.post('/test', async(req, res, next) => {
+  let body  = {
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+  }
+  let body1  = {
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+  }
+  let body2  = {
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+  }
+  console.log(req.body)
+  if(req.body.testcases[0].i !== ''){
     if(req.body.testcases[0].i !== ''){
       body.stdin = req.body.testcases[0].i
       body.language = req.body.language
@@ -91,6 +99,7 @@ router.post('/', async(req, res, next) => {
     })
   }
 });
+
 
 
 module.exports = router; 

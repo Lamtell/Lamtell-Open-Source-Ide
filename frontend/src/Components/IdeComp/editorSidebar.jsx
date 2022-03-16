@@ -221,11 +221,11 @@ function Sidebar(props) {
     const id = toast.loading("Running Your Code!");
     dispatch(runCode(file.content, editorLang, inout[0].content, samples)).then(
       (e) => {
-        dispatch(sampleTestOutput(e.data.output));
-        const tcevent = new CustomEvent("tcOutput", {
-          detail: { openWindow: true, message: "success" },
-        });
-        document.documentElement.dispatchEvent(tcevent);
+        // dispatch(sampleTestOutput(e.data.output));
+        // const tcevent = new CustomEvent("tcOutput", {
+        //   detail: { openWindow: true, message: "success" },
+        // });
+        // document.documentElement.dispatchEvent(tcevent);
         inout[1].content = e.data.output;
         const data = {
           output: e.data.output,
