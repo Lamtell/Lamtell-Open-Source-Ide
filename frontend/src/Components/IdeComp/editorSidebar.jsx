@@ -106,15 +106,31 @@ function Sidebar(props) {
     return(
       <ul className="settingWindow">
         <li className="settingOptions">
-        <input type="number" id="fontSize" className="options-link" name="quantity" min="1" defaultValue={20}
-        onChange={(e) => props.fSize(e.target.value)}/>
+        <input type="number" id="fontSize" className="options-link" name="quantity" min="1"
+        onChange={(e) => {
+          props.fSize(e.target.value)
+          localStorage.setItem("fs", e.target.value)
+          }}
+          value={localStorage.getItem("fs")}
+          />
         </li>
         <li className="settingOptions">
-        <input type="number" id="fontWeight" className="options-link" name="quantity" min="400" defaultValue={400}
-        onChange={(e) => props.fWeight(e.target.value)}/>
+        <input type="number" id="fontWeight" className="options-link" name="quantity" min="400"
+        onChange={(e) => {
+          props.fWeight(e.target.value)
+          localStorage.setItem("fw", e.target.value)
+        }}
+          value={localStorage.getItem("fw")}
+          />
         </li>
         <li className="settingOptions">
-        <select id="fontStyle" className="options-link" onChange={(e) => props.fStyle(e.target.value)}>
+        <select id="fontStyle" className="options-link" 
+          onChange={(e) => {
+            props.fStyle(e.target.value)
+            localStorage.setItem("fsty", e.target.value)  
+          }}
+          value={localStorage.getItem("fsty")}
+          >
           <option value="monospace">Monospace</option>
           <option value="none">None</option>
           <option value="cursive">Cursive</option>
@@ -124,7 +140,13 @@ function Sidebar(props) {
         </select>
         </li>
         <li className="settingOptions">
-        <select id="theme" className="options-link" onChange={(e) => props.theme(e.target.value)}>
+        <select id="theme" className="options-link" onChange={(e) => 
+          {
+            props.theme(e.target.value)
+            localStorage.setItem("eth", e.target.value)  
+          }}
+          value={localStorage.getItem("eth")}
+          >
           <option value="vs-dark">Vs dark</option>
           <option value="Active4D">Active 4D</option>
           <option value="All Hallows Eve">All Hallows Eve</option>
@@ -218,9 +240,11 @@ function Sidebar(props) {
   };
 
   const codeRun = () => {
+    console.log("CODERUN FUNCTION")
     const id = toast.loading("Running Your Code!");
     dispatch(runCode(file.content, editorLang, inout[0].content, samples)).then(
       (e) => {
+        console.log(editorLang)
         // dispatch(sampleTestOutput(e.data.output));
         // const tcevent = new CustomEvent("tcOutput", {
         //   detail: { openWindow: true, message: "success" },
@@ -246,6 +270,10 @@ function Sidebar(props) {
   useEffect(() => {
     let userOption = false;
     let settingOption = false;
+    localStorage.setItem("fw", 400)
+    localStorage.setItem("fs", 20)
+    localStorage.setItem("fsty", "monospace")
+    localStorage.setItem("eth", "vs-dark")
     document.documentElement.addEventListener("click", (e) => {
       //open or close user window when click on the icon 
       if(e.target.className === "far fa-user" || e.target.className === "profile sidenav-buttons"){
@@ -285,12 +313,12 @@ function Sidebar(props) {
       }
     });
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "F2") {
-        codeRun()
-        return false
-      }
-    })
+    // document.addEventListener("keydown", (e) => {
+    //   if (e.key === "F2") {
+    //   console.log("WORKING ON RUNNIG CODE")
+    //     codeRun()
+    //   }
+    // })
   }, []);
 
   return (

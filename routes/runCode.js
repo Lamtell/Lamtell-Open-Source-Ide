@@ -36,7 +36,6 @@ router.post('/test', async(req, res, next) => {
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
   }
-  console.log(req.body)
   if(req.body.testcases[0].i !== ''){
     if(req.body.testcases[0].i !== ''){
       body.stdin = req.body.testcases[0].i
