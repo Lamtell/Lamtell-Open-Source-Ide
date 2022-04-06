@@ -17,6 +17,13 @@ if(env === "development") {
   url = 'https://lamtellbackend.herokuapp.com/'
 }
 
+function Preloader(){
+  return(
+<div id="preloader">
+  <div id="loader"></div>
+</div>
+  )
+}
 
 function DSA() {
   const { id,shareId } = useParams();
@@ -63,9 +70,10 @@ function DSA() {
       .get(url+`share/${shareId}`)
       .then((response) => {
         file.content = response.data.code;
-        setLoading(true);
+        //setLoading(true);
       });
-    } else {
+    }
+     else {
       setLoading(true);
     }
     document.documentElement.addEventListener("output", (e) => {
@@ -126,7 +134,7 @@ function DSA() {
   return (
     <>
       {!isLoading ? (
-        ""
+        <Preloader/>
       ) : (
         <div>
           <div className="DSA">

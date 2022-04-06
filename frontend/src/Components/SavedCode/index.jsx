@@ -12,8 +12,19 @@ let globalUrl =
     : 'https://lamtellbackend.herokuapp.com/';
 
 
+function Preloader(){
+    return(
+    <div id="preloader">
+    <div id="loader"></div>
+  </div>
+  )
+}
+    
+    
+
 export default function UserCode() {
   const [codeInfo, setCodeInfo] = useState([]);
+  const [isLoading, setLoading] = useState(false);
   const userId = localStorage.getItem("userId")
   useEffect(() => {
     (() => {
@@ -33,6 +44,7 @@ export default function UserCode() {
           });
           //userCode.reverse();
           setCodeInfo(userCode);
+          setLoading(true)
           userCode = []
         } else if (response.data.status === 401) {
           alert(response.data.message);
@@ -43,41 +55,44 @@ export default function UserCode() {
 
   return (
     <>
-      <div className="codetable">
-      <table>
-        <tbody>
-          <tr className="table-header">
-            <th>No.</th>
-            <th>Name</th>
-            <th>Language</th>
-            <th>Created At</th>
-          </tr>
-          {codeInfo.map((lecture, key) => {
-
-            return (
-              <tr key={key} id={lecture.id} className="table-row">
-                <td>
-                  <a href={`usercode/${lecture.id}`}>{lecture.no}</a>
-                </td>
-                <td>
-                  <a href={`usercode/${lecture.id}`}>{lecture.name}</a>
-                </td>
-                <td>
-                  <a href={`usercode/${lecture.id}`}>{lecture.language}</a>
-                </td>
-                <td>
-                  <a href={`usercode/${lecture.id}`}>
-                    <Moment>
-                    {lecture.createdAt}
-                    </Moment>
-                    </a>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+          {!isLoading ? (
+        <Preloader/>
+      ) : (
+        <div className="codetable">
+        <table>
+          <tbody>
+            <tr className="table-header">
+              <th>No.</th>
+              <th>Name</th>
+              <th>Language</th>
+              <th>Created At</th>
+            </tr>
+            {codeInfo.map((lecture, key) => {
+              return (
+                <tr key={key} id={lecture.id} className="table-row">
+                  <td>
+                    <a href={`usercode/${lecture.id}`}>{lecture.no}</a>
+                  </td>
+                  <td>
+                    <a href={`usercode/${lecture.id}`}>{lecture.name}</a>
+                  </td>
+                  <td>
+                    <a href={`usercode/${lecture.id}`}>{lecture.language}</a>
+                  </td>
+                  <td>
+                    <a href={`usercode/${lecture.id}`}>
+                      <Moment>
+                      {lecture.createdAt}
+                      </Moment>
+                      </a>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      )}
     </>
   );
 }
