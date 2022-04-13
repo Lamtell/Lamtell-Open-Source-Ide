@@ -3,16 +3,7 @@ export const DSAFiles = [
         "type": "file",
         "name": "main.cpp",
         "id": "sa1GQ3eYSvOv1kRvhEoQV",
-        "content": 
-`#include<stdio.h>
-
-int main() {
-   int x=10;
-   int y=25;
-   int z=x+y;
-   printf("Sum of x+y = %i", z);
-}
-`
+        "content": ``
 
     },
     {
