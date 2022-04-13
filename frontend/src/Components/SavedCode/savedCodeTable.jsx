@@ -15,7 +15,7 @@ export default function Table(props) {
             <th>No.</th>
             <th>Name</th>
             <th>Language</th>
-            <th>Created At</th>
+            {/* <th>Created At</th> */}
           </tr>
           {props.savedCode.map((lecture, key) => {
             return (
@@ -29,9 +29,9 @@ export default function Table(props) {
                 <td>
                   <a href={`usercode/${lecture.id}`}>{lecture.language}</a>
                 </td>
-                <td>
+                {/* <td>
                   <a href={`usercode/${lecture.id}`}>{lecture.createdAt}</a>
-                </td>
+                </td> */}
               </tr>
             );
           })}

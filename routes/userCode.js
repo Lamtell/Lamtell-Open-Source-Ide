@@ -5,9 +5,8 @@ const UserSession = require("../models/userSession");
 require("firebase/auth");
 
 router.get("/:id", async (req, res) => {
-  console.log("WORKING-1");
   UserSession.findOne({ sessId: req.params.id }).then((response) => {
-    console.log(response)
+    //console.log(response)
     if (response) {
       UserCode.find({ creator: response.user }).then((response) => {
         res.json({ status: 200, code: response });
@@ -21,11 +20,19 @@ router.get("/:id", async (req, res) => {
 });
 
 router.get("/code/:id", async (req, res) => {
-  console.log(req.params);
-  console.log("WORKING-2");
+  console.log("WROING")
   UserCode.find({ _id: req.params.id }, "code").then((response) => {
     console.log(response[0].code);
     res.json({ status: 200, code: response[0].code });
+  });
+});
+
+
+router.post("/delete/:id", async (req, res) => {
+  console.log(req.params);
+  console.log("WORKING-3");
+  UserCode.deleteOne({ _id: req.params.id }).then((response) => {
+    res.json({ status: 200});
   });
 });
 

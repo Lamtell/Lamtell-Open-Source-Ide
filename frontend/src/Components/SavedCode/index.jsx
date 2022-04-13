@@ -52,7 +52,6 @@ export default function UserCode() {
       });
     })();
   }, []);
-
   return (
     <>
           {!isLoading ? (
@@ -66,6 +65,7 @@ export default function UserCode() {
               <th>Name</th>
               <th>Language</th>
               <th>Created At</th>
+              <th>Delete</th>
             </tr>
             {codeInfo.map((lecture, key) => {
               return (
@@ -85,6 +85,20 @@ export default function UserCode() {
                       {lecture.createdAt}
                       </Moment>
                       </a>
+                  </td>
+                  <td>
+                      <div className="edoption">
+                        {/* <a className={`editCode`}>Edit</a> */}
+                        <button className={`deleteCode`} onClick={() => {
+                          console.log("WOKRIN")
+                          axios.post(
+                            `${globalUrl}usercode/delete/${lecture.id}`
+                          ).then((res) => {
+                            console.log(res)
+                            window.location.reload()
+                          })
+                        }}>Delete</button>
+                      </div>
                   </td>
                 </tr>
               );
