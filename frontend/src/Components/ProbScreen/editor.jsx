@@ -6,6 +6,7 @@ import Footer from "../IdeComp/editorFooter";
 import { addContent } from "../../actions";
 import { sampleTestOutput } from "../../actions";
 import { motion } from "framer-motion"
+import { toast } from "react-toastify";
 import { runTestCode } from "../../actions/outputAction";
 import "./editor.css";
 
@@ -176,10 +177,18 @@ function EditorPS(props) {
           <button
             className="btn"
             onClick={() => {
+              const id = toast.loading("Running Your Code!");
               dispatch(runTestCode(file.content, editorLang, customIn, samples)).then((e) => {
                 dispatch(sampleTestOutput(e.data.output));
                 const tcevent = new CustomEvent("tcOutput", {
                   detail: { openWindow: true, message: "success" },
+                });
+                toast.update(id, {
+                  render: "Hurry!",
+                  type: "success",
+                  isLoading: false,
+                  autoClose: 1000,
+                  closeButton: true,
                 });
                 document.documentElement.dispatchEvent(tcevent);
               })
@@ -196,8 +205,8 @@ function EditorPS(props) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type:"tween", duration: 0.2 }} 
           className="inoutTextarea">
-             <textarea className="ps_inout" onChange={handleInput}/>
-             <textarea className="ps_inout" defaultValue={outputValue} readOnly/>
+             <textarea className="ps_inout"  placeholder = "Enter Input.." onChange={handleInput}/>
+             <textarea className="ps_inout" placeholder = "Waiting for your output" defaultValue={outputValue} readOnly/>
           </motion.div> : ""}
           <div className="outputCard">
           <div className="left">
