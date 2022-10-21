@@ -100,6 +100,7 @@
     color: var(--sidenavcolor);
     left:52px;
     top:83vh;
+    text-align:center;
     min-width: 130px;
 }
 
