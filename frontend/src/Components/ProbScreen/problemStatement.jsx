@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 let globalUrl =
   process.env.NODE_ENV === "development"
     ? "http://localhost:5000/"
-    : 'https://lamtellbackend.herokuapp.com/';
+    : 'https://lamtell.onrender.com/';
 
 function PS() {
     const dispatch = useDispatch();

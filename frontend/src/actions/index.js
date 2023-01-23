@@ -5,7 +5,7 @@ let url
 if(env === "development") {
     url = 'http://localhost:5000/'
 }else{
-    url = 'https://lamtellbackend.herokuapp.com/'
+    url = 'https://lamtell.onrender.com/'
 }
 
 

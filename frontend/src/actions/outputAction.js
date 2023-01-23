@@ -5,7 +5,7 @@ export const runCode = ( code,language,input,testcases) => async dispatch => {
     if(env === "development") {
         url = 'http://localhost:5000/'
     }else{
-        url = 'https://lamtellbackend.herokuapp.com/'
+        url = 'https://lamtell.onrender.com/'
     }
     console.log(input, language)
     if(language === "python"){
@@ -31,7 +31,7 @@ export const runTestCode = ( code,language,input,testcases) => async dispatch =>
     if(env === "development") {
         url = 'http://localhost:5000/'
     }else{
-        url = 'https://lamtellbackend.herokuapp.com/'
+        url = 'https://lamtell.onrender.com/'
     }
     console.log(input, language)
     if(language === "python"){
